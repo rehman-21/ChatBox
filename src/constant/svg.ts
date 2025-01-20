@@ -1,8 +1,12 @@
 export const SVG={
-    GOOGLE_LOGO:require('../assets/images/google-logo.svg')
+    // GOOGLE_LOGO:require('../asset/svg/google-logo.svg'),
+    SPLASH_LOGO:require('../asset/svg/Logo.svg'),
+    SMALL_LOGO:require('../asset/svg/Smll-Logo.svg'),
+    PINK_BG:require('../asset/svg/pink-bg.svg'),
+    HEADING:require('../asset/svg/Head.svg'),
 }
 export const PNG={
-    SPLASH_LOGO:require('../assets/images/splash.png'),
-    ICON_LOGO:require('../assets/images/icon.png'),
-    SALE_BANNER:require('../assets/images/sale-banner.jpg'),
+    GOOGLE_ICON:require('../asset/images/Google.png'),
+    FACEBOOK_ICON:require('../asset/images/Facebook.png'),
+    APPLE_ICON:require('../asset/images/Apple-icon.png'),
 }
