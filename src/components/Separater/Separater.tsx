@@ -1,14 +1,17 @@
 import React from 'react'
-import { StyleSheet, View } from 'react-native'
+import { StyleSheet, TextStyle, View } from 'react-native'
 import { ThemedText } from '../../CoreComponent/ThemedText'
 import { DIMENSIONS } from '../../constant/Dimensions'
+interface textprop {
+    textStyle: TextStyle
+}
 
-export const Separater: React.FC = () => {
+export const Separater: React.FC<textprop> = ({ textStyle }) => {
     return (
         <View style={styles.container}>
             <View style={styles.border}></View>
             <View style={styles.textContainer}>
-                <ThemedText>
+                <ThemedText style={[styles.orStyle, textStyle]}>
                     OR
                 </ThemedText>
             </View>
@@ -30,5 +33,8 @@ const styles = StyleSheet.create({
     },
     textContainer: {
         padding: 20
+    },
+    orStyle: {
+        color: '#FFF'
     }
 })
