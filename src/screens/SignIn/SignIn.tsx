@@ -1,98 +1,57 @@
-import React from 'react';
-import { StyleSheet, ImageBackground, View } from 'react-native';
-import { ThemedView } from '../../CoreComponent/ThemedView';
-import Animated, {
-    FadeInDown,
-    FadeInRight,
-    FadeInLeft,
-} from 'react-native-reanimated'; // Ensure this is imported
-import { PNG, SVG } from '../../constant/svg';
-import { Description } from '../../components/Description/Description';
-import { Header } from '../../components/Header/Header';
-import { SocialBtn } from '../../components/SocialBtn/SocialBtn';
-import CustomButton from '../../components/Button/Button';
-import { DIMENSIONS } from '../../constant/Dimensions';
-import { Links, Separater } from '../../components';
+import React from 'react'
+import { StyleSheet, Text, View } from 'react-native'
+import { ThemedView } from '../../CoreComponent/ThemedView'
+import { ThemedText } from '../../CoreComponent/ThemedText'
+import { CustomTextInput, Description, GoBack, H1, Separater } from '../../components'
+import { sizes } from '../../constant/size'
+import { SocialBtn } from '../../components/SocialBtn/SocialBtn'
+import { PNG } from '../../constant/svg'
+import Animated, { FadeInDown } from 'react-native-reanimated'
 
-export const SignIn: React.FC = () => {
-    const AnimatedLeft = () => {
-        return FadeInLeft.delay(1100).duration(600);
-    };
-
-    const AnimatedRight = () => {
-        return FadeInRight.delay(1100).duration(600);
-    };
-
+export const SignIn = () => {
     const AnimatedDown = () => {
         return FadeInDown.delay(1100).duration(600); // Ensure return statement is used here
     };
-
     return (
-        <View style={styles.container}>
-            <ImageBackground
-                source={require('../../asset/images/Pink-color.png')}
-                style={styles.backgroundImage}
-                resizeMode="cover"
-                accessible={false}
-                importantForAccessibility="no">
-                <Header Logo={<SVG.SMALL_LOGO.default />} title="Chatbox" />
-
-                <Animated.View
-                    entering={AnimatedLeft()}
-                    style={styles.animatedContainer}>
-                    <SVG.HEADING.default />
-                </Animated.View>
-
-                <Animated.View
-                    entering={AnimatedRight()}
-                    style={styles.animatedContainer}>
-                    <Description
-                        Description="Our chat app is the perfect
-           way to stay connected with friends and family."
-                    />
-                </Animated.View>
-                <Animated.View entering={AnimatedDown()} style={styles.SocialContainer}>
-                    <SocialBtn source={PNG.FACEBOOK_ICON} />
-                    <SocialBtn source={PNG.GOOGLE_ICON} />
-                    <SocialBtn source={PNG.APPLE_ICON} />
-                </Animated.View>
-                <Animated.View entering={AnimatedRight()}>
-                    <Separater />
-                </Animated.View>
-                <Animated.View entering={AnimatedLeft()}>
-                    <CustomButton
-                        buttonStyle={styles.signUpBtn}
-                        title="Sign up with mail"
-                    />
-                </Animated.View>
-                <Animated.View entering={AnimatedDown()}>
-                    <Links account="Existing account ? " link="Log in" />
-                </Animated.View>
-            </ImageBackground>
-        </View>
-    );
-};
+        <ThemedView style={styles.container}>
+            <GoBack />
+            <H1 TITLE='Log in to Chatbox ' />
+            <Description textstyle={{ textAlign: 'center' }}
+                Description='Welcome back! Sign in using your social account or email to continue us' />
+            <Animated.View
+                entering={AnimatedDown()}
+                style={styles.SocialContainer}
+            >
+                <SocialBtn
+                    BtnStyle={styles.btnContainer}
+                    source={PNG.FACEBOOK_ICON} />
+                <SocialBtn
+                    BtnStyle={styles.btnContainer}
+                    source={PNG.GOOGLE_ICON} />
+                <SocialBtn
+                    BtnStyle={styles.btnContainer}
+                    source={PNG.APPLE} />
+            </Animated.View>
+            <Separater textStyle={{ color: '#000' }} />
+            <CustomTextInput placeholder='Your email' />
+            <CustomTextInput secureTextEntry={true} placeholder='Password' />
+        </ThemedView>
+    )
+}
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#000',
-    },
-    backgroundImage: {
-        flex: 1,
-        padding: 15,
-    },
-    animatedContainer: {
-        marginTop: 10,
+        paddingHorizontal: sizes.wp_5
     },
     SocialContainer: {
-        marginTop: 10,
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'center',
+
     },
-    signUpBtn: {
-        width: DIMENSIONS.WIDTH * 0.9,
-        height: DIMENSIONS.HEIGHT * 0.07,
-    },
-});
+    btnContainer: {
+        backgroundColor: '#FFF',
+        borderColor: '#000'
+    }
+})

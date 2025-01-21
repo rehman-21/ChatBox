@@ -12,7 +12,7 @@ export const Splash: React.FC = () => {
 
     useEffect(() => {
         const timer = setTimeout(() => {
-            navigation.navigate(ROUTES.SIGN_IN);
+            navigation.navigate(ROUTES.ONBOARDING_SCREEN);
         }, 3000);
 
         return () => clearTimeout(timer);

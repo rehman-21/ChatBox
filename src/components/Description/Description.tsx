@@ -1,14 +1,17 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, TextStyle, View } from 'react-native';
 import { ThemedText } from '../../CoreComponent/ThemedText';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import { sizes } from '../../constant/size';
 interface desProps {
     Description: string
+    textstyle: TextStyle
 }
 
-export const Description: React.FC<desProps> = ({ Description }) => {
+export const Description: React.FC<desProps> = ({ Description, textstyle }) => {
     return (
         <View >
-            <ThemedText style={styles.text}>{Description}</ThemedText>
+            <ThemedText style={[styles.text, textstyle]}>{Description}</ThemedText>
         </View>
     );
 };
@@ -16,8 +19,10 @@ export const Description: React.FC<desProps> = ({ Description }) => {
 const styles = StyleSheet.create({
 
     text: {
-        fontSize: 16,
-        color: '#B9C1BE',
+        color: '#797C7B',
+        fontSize: sizes.size18,
+        lineHeight: 20,
+        marginVertical: sizes.hp_2
     },
 });
 

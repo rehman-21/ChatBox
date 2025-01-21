@@ -1,6 +1,8 @@
 import React from 'react';
 import { TouchableOpacity, Text, StyleSheet, ViewStyle } from 'react-native';
 import { ThemedText } from '../../CoreComponent/ThemedText';
+import { DIMENSIONS } from '../../constant/Dimensions';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 type CustomButtonProps = {
     title: string;
@@ -23,11 +25,13 @@ const styles = StyleSheet.create({
         paddingVertical: 12,
         paddingHorizontal: 20,
         alignItems: 'center',
+        width: DIMENSIONS.WIDTH * 0.9,
+        justifyContent: 'center'
 
     },
     text: {
         color: 'black',
-        fontSize: 16,
+        fontSize: hp('2%'),
         fontWeight: '500',
     },
 });

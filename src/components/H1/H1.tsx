@@ -1,6 +1,7 @@
 import { StyleSheet, View } from 'react-native';
 import React from 'react';
 import { ThemedText } from '../../CoreComponent/ThemedText';
+import { sizes } from '../../constant/size';
 
 interface Props {
     TITLE: string;
@@ -18,12 +19,10 @@ export const H1: React.FC<Props> = ({ TITLE }) => {
 
 
 const styles = StyleSheet.create({
-    content: {
-        padding: 20,
-    },
+
     headingText: {
-        color: '#FFF',
-        marginVertical: 5,
-        fontSize: 50,
+        fontSize: sizes.size22,
+        textAlign: 'center',
+        fontWeight: '600'
     },
 });
