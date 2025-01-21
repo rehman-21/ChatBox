@@ -6,13 +6,14 @@ interface LinksProps {
     account: string;
     link: string;
     linkStyle: TextStyle;
+    onPress: () => void
 }
 
-export const Links: React.FC<LinksProps> = ({ account, link, linkStyle }) => {
+export const Links: React.FC<LinksProps> = ({ account, link, linkStyle, onPress }) => {
     return (
         <View style={styles.container}>
             <ThemedText style={{ color: '#B9C1BE', fontSize: 14 }}>{account}</ThemedText>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={onPress}>
                 <ThemedText style={[styles.linkText, linkStyle]}>{link}</ThemedText>
             </TouchableOpacity>
         </View>
