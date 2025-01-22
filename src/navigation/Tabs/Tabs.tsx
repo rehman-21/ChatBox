@@ -1,78 +1,67 @@
 import React from 'react';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import Ionicons from 'react-native-vector-icons/Ionicons';
-import {ROUTES} from '../../constants/routes';
-import Home from '../../screen/Home';
-import Explore from '../../screen/Explore';
-import Notification from '../../screen/Notification';
-import Cart from '../../screen/Cart';
-import Profile from '../../screen/Profile';
+import { View, Text } from 'react-native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { NavigationContainer } from '@react-navigation/native';
+import Icon from 'react-native-vector-icons/AntDesign'; // Use the appropriate icon set
 
 const Tab = createBottomTabNavigator();
 
+// Placeholder screens
+const MessageScreen = () => (
+  <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+    <Text>Message Screen</Text>
+  </View>
+);
+
+const CallsScreen = () => (
+  <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+    <Text>Calls Screen</Text>
+  </View>
+);
+
+const ContactsScreen = () => (
+  <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+    <Text>Contacts Screen</Text>
+  </View>
+);
+
+const SettingsScreen = () => (
+  <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+    <Text>Settings Screen</Text>
+  </View>
+);
+
+// Bottom Tab Navigator Component
 export const MyTab = () => {
   return (
     <Tab.Navigator
-      screenOptions={({route}) => ({
-        tabBarIcon: ({focused, color, size}) => {
+      screenOptions={({ route }) => ({
+        headerShown: false,
+        tabBarIcon: ({ focused, color, size }) => {
           let iconName;
 
-          switch (route.name) {
-            case ROUTES.HOME_SCREEN:
-              iconName = focused ? 'home' : 'home-outline';
-              break;
-            case ROUTES.EXPLORE_SCREEN:
-              iconName = focused ? 'search' : 'search-outline';
-              break;
-            case ROUTES.NOTIFICATION_SCREEN:
-              iconName = focused ? 'notifications' : 'notifications-outline';
-              break;
-            case ROUTES.CART_SCREEN:
-              iconName = focused ? 'cart' : 'cart-outline';
-              break;
-            case ROUTES.PROFILE_SCREEN:
-              iconName = focused ? 'person' : 'person-outline';
-              break;
-            default:
-              iconName = 'ellipse-outline';
-              break;
+          if (route.name === 'Message') {
+            iconName = 'message1';
+          } else if (route.name === 'Calls') {
+            iconName = 'call';
+          } else if (route.name === 'Contacts') {
+            iconName = 'contacts';
+          } else if (route.name === 'Settings') {
+            iconName = 'settings';
           }
 
-          return <Ionicons name={iconName} size={size} color={color} />;
+          return <Icon name={iconName} size={size} color={color} />;
         },
-        tabBarActiveTintColor: 'blue',
+        tabBarActiveTintColor: '#008080', // Customize active color
         tabBarInactiveTintColor: 'gray',
-        tabBarStyle: {height: 60, paddingBottom: 5},
-      })}>
-      <Tab.Screen
-        name={ROUTES.HOME_SCREEN}
-        component={Home}
-        options={{headerShown: false}}
-      />
-      <Tab.Screen
-        name={ROUTES.EXPLORE_SCREEN}
-        component={Explore}
-        options={{headerShown: false}}
-      />
-      <Tab.Screen
-        name={ROUTES.NOTIFICATION_SCREEN}
-        component={Notification}
-        options={{headerShown: false}}
-      />
-      <Tab.Screen
-        name={ROUTES.CART_SCREEN}
-        component={Cart}
-        options={{
-          headerShown: false,
-          tabBarBadge: 3,
-          tabBarBadgeStyle: {backgroundColor: 'red', color: 'white'},
-        }}
-      />
-      <Tab.Screen
-        name={ROUTES.PROFILE_SCREEN}
-        component={Profile}
-        options={{headerShown: false}}
-      />
+        tabBarStyle: { height: 60 },
+        tabBarLabelStyle: { fontSize: 12, fontWeight: 'bold' },
+      })}
+    >
+      <Tab.Screen name="Message" component={MessageScreen} />
+      <Tab.Screen name="Calls" component={CallsScreen} />
+      <Tab.Screen name="Contacts" component={ContactsScreen} />
+      <Tab.Screen name="Settings" component={SettingsScreen} />
     </Tab.Navigator>
   );
 };

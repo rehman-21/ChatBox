@@ -1,2 +1,5 @@
 export * from './Splash/Splash'
 export * from './SignIn/SignIn'
+export * from './Onboarding/Onboarding'
+export * from './SignUp/SignUp'
+export * from './Home/Home'
