@@ -9,11 +9,11 @@ interface Props {
 
 export const H1: React.FC<Props> = ({ TITLE }) => {
     return (
-        <View style={styles.content}>
+        <View>
             <ThemedText style={styles.headingText}>
                 {TITLE}
             </ThemedText>
-        </View>
+        </View >
     );
 };
 
@@ -21,7 +21,7 @@ export const H1: React.FC<Props> = ({ TITLE }) => {
 const styles = StyleSheet.create({
 
     headingText: {
-        fontSize: sizes.size22,
+        fontSize: sizes.size18,
         textAlign: 'center',
         fontWeight: '600'
     },

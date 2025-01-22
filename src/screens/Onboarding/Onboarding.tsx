@@ -71,6 +71,7 @@ export const OnBoarding: React.FC = () => {
                     <CustomButton
                         buttonStyle={styles.signUpBtn}
                         title="Sign up with mail"
+                        onPress={() => navigation.navigate(ROUTES.SIGN_UP)}
                     />
                 </Animated.View>
                 <Animated.View entering={AnimatedDown()}>

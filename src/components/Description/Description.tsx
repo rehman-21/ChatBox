@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
 
     text: {
         color: '#797C7B',
-        fontSize: sizes.size18,
+        fontSize: sizes.size14,
         lineHeight: 20,
         marginVertical: sizes.hp_2
     },
