@@ -1,5 +1,5 @@
 import React from 'react';
-import { TouchableOpacity, Text, StyleSheet, ViewStyle } from 'react-native';
+import { TouchableOpacity, Text, StyleSheet, ViewStyle, TextStyle } from 'react-native';
 import { ThemedText } from '../../CoreComponent/ThemedText';
 import { DIMENSIONS } from '../../constant/Dimensions';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
@@ -8,12 +8,13 @@ type CustomButtonProps = {
     title: string;
     onPress: () => void;
     buttonStyle?: ViewStyle;
+    textStyle: TextStyle
 };
 
-const CustomButton: React.FC<CustomButtonProps> = ({ title, onPress, buttonStyle }) => {
+const CustomButton: React.FC<CustomButtonProps> = ({ title, onPress, buttonStyle, textStyle }) => {
     return (
         <TouchableOpacity style={[styles.button, buttonStyle]} onPress={onPress}>
-            <ThemedText style={styles.text}>{title}</ThemedText>
+            <ThemedText style={[styles.text, textStyle]}>{title}</ThemedText>
         </TouchableOpacity>
     );
 };

@@ -1,8 +1,7 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { SignIn, Splash } from '../../screens';
+import { OnBoarding, SignIn, SignUp, Splash } from '../../screens';
 import { ROUTES } from '../../constant/routes';
-import { OnBoarding } from '../../screens/Onboarding/Onboarding';
 ;
 
 const Stack = createNativeStackNavigator();
@@ -14,6 +13,7 @@ export const AuthStack = () => {
       <Screen name={ROUTES.SPLASH_SCREEN} component={Splash} />
       <Screen name={ROUTES.ONBOARDING_SCREEN} component={OnBoarding} />
       <Screen name={ROUTES.SIGN_IN} component={SignIn} />
+      <Screen name={ROUTES.SIGN_UP} component={SignUp} />
     </Navigator>
   );
 };

@@ -26,10 +26,15 @@ export const Colors = {
 };
 export const COLORS = {
   primary: '#572fff',
-  black: '#333',
+  black_gray: '#333',
   gray: '#666',
   lightGray: '#999',
   white: '#fff',
   background: '#F4F4F4',
   highlight: '#F4CE14',
+  off_white_green: "#24786D",
+  off_white: "#F3F6F6",
+  black: '#000',
+  off_white_gray: '#797C7B',
+  red:"#FF2D1B"
 }

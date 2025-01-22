@@ -19,7 +19,6 @@ export const CustomTextInput: React.FC<CustomTextInputProps> = ({
     keyboardType = 'default',
     style = {},
 }) => {
-
     return (
         <View style={styles.container}>
             <TextInput
@@ -30,7 +29,6 @@ export const CustomTextInput: React.FC<CustomTextInputProps> = ({
                 secureTextEntry={secureTextEntry}
                 keyboardType={keyboardType}
                 placeholderTextColor={'#5EBAAE'}
-
             />
         </View>
     );
@@ -39,13 +37,12 @@ export const CustomTextInput: React.FC<CustomTextInputProps> = ({
 const styles = StyleSheet.create({
     container: {
         marginVertical: 10,
-        justifyContent: 'center'
+        justifyContent: 'center',
     },
     input: {
         height: sizes.hp_8,
-        borderBottomWidth: 1,
+        borderBottomWidth: 0.3,
         borderColor: '#595E5C',
-        fontWeight: '600'
+        fontWeight: '600',
     },
 });
-

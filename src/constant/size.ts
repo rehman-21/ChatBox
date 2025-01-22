@@ -1,11 +1,11 @@
-import {Dimensions} from 'react-native';
+import { Dimensions } from 'react-native';
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
-import {useSafeAreaInsets} from 'react-native-safe-area-context';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-const {width, height} = Dimensions.get('window');
+const { width, height } = Dimensions.get('window');
 export const IconSize = (num: number) => Math.min(width, height) * num;
 
 export const useSafeArea = () => {
@@ -22,6 +22,7 @@ export const sizes = {
   size14: 14,
   size15: 15,
   size16: 16,
+  size17: 17,
   size18: 18,
   size20: 20,
   size22: 22,
