@@ -1,67 +1,82 @@
 import React from 'react';
-import { View, Text } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { NavigationContainer } from '@react-navigation/native';
-import Icon from 'react-native-vector-icons/AntDesign'; // Use the appropriate icon set
+import { View, Text } from 'react-native';
+import { COLORS } from '../../constant/Colors';
+import { ROUTES } from '../../constant/routes';
+import { sizes } from '../../constant/size';
+import {
+  CallIcon,
+  CallIconCopy,
+  MessageIcon,
+  MessageIconCopy,
+  ProfileIcon,
+  ProfileIconCopy,
+  SettingIcon,
+  SettingIconCopy,
+} from '../../constant/svg';
+import { Message } from '../../screens/Messages/Message';
+import { Calls, Contacts, Home, Settings } from '../../screens';
 
 const Tab = createBottomTabNavigator();
 
-// Placeholder screens
-const MessageScreen = () => (
-  <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-    <Text>Message Screen</Text>
-  </View>
-);
-
-const CallsScreen = () => (
-  <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-    <Text>Calls Screen</Text>
-  </View>
-);
-
-const ContactsScreen = () => (
-  <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-    <Text>Contacts Screen</Text>
-  </View>
-);
-
-const SettingsScreen = () => (
-  <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-    <Text>Settings Screen</Text>
-  </View>
-);
-
-// Bottom Tab Navigator Component
 export const MyTab = () => {
   return (
     <Tab.Navigator
-      screenOptions={({ route }) => ({
+      backBehavior="history"
+      screenOptions={{
         headerShown: false,
-        tabBarIcon: ({ focused, color, size }) => {
-          let iconName;
-
-          if (route.name === 'Message') {
-            iconName = 'message1';
-          } else if (route.name === 'Calls') {
-            iconName = 'call';
-          } else if (route.name === 'Contacts') {
-            iconName = 'contacts';
-          } else if (route.name === 'Settings') {
-            iconName = 'settings';
-          }
-
-          return <Icon name={iconName} size={size} color={color} />;
+        tabBarStyle: {
+          height: 70,
+          backgroundColor: COLORS.white,
+          paddingTop: sizes.hp_1
         },
-        tabBarActiveTintColor: '#008080', // Customize active color
-        tabBarInactiveTintColor: 'gray',
-        tabBarStyle: { height: 60 },
-        tabBarLabelStyle: { fontSize: 12, fontWeight: 'bold' },
-      })}
-    >
-      <Tab.Screen name="Message" component={MessageScreen} />
-      <Tab.Screen name="Calls" component={CallsScreen} />
-      <Tab.Screen name="Contacts" component={ContactsScreen} />
-      <Tab.Screen name="Settings" component={SettingsScreen} />
+        tabBarActiveTintColor: COLORS.off_white_green,
+        tabBarInactiveTintColor: COLORS.off_white_gray,
+      }}>
+      <Tab.Screen
+        name={ROUTES.HOME_SCREEN}
+        component={Home}
+        options={{
+          tabBarIcon: ({ focused }) => (
+            <View style={{ alignItems: 'center' }}>
+              {focused ? <MessageIconCopy /> : <MessageIcon />}
+            </View>
+          ),
+        }}
+      />
+      <Tab.Screen
+        name={ROUTES.CALL_SCREEN}
+        component={Calls}
+        options={{
+          tabBarIcon: ({ focused }) => (
+            <View style={{ alignItems: 'center' }}>
+              {focused ? <CallIconCopy /> : <CallIcon />}
+            </View>
+          ),
+        }}
+      />
+      <Tab.Screen
+        name={ROUTES.CONTACTS_SCREEN}
+        component={Contacts}
+        options={{
+          tabBarIcon: ({ focused }) => (
+            <View style={{ alignItems: 'center' }}>
+              {focused ? <ProfileIconCopy /> : <ProfileIcon />}
+            </View>
+          ),
+        }}
+      />
+      <Tab.Screen
+        name={ROUTES.SETTING_SCREEN}
+        component={Settings}
+        options={{
+          tabBarIcon: ({ focused }) => (
+            <View style={{ alignItems: 'center' }}>
+              {focused ? <SettingIconCopy /> : <SettingIcon />}
+            </View>
+          ),
+        }}
+      />
     </Tab.Navigator>
   );
 };

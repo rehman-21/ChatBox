@@ -9,11 +9,10 @@ export const ROUTES = {
     STACK: 'STACK',
     //*=============================================>
     TABS: 'TAB',
-    HOME_SCREEN: 'HOME',
-    EXPLORE_SCREEN: 'EXPLORE',
-    NOTIFICATION_SCREEN: 'NOTIFICATION',
-    CART_SCREEN: 'CART',
-    PROFILE_SCREEN: 'PROFILE',
+    HOME_SCREEN: 'Messages',
+    CALL_SCREEN: 'Calls',
+    CONTACTS_SCREEN: 'Contacts',
+    SETTING_SCREEN: 'Setting',
     //*=============================================>
     AUTH_STACK: 'AUTHSTACK',
     APP_STACK: 'APPSTACK',
