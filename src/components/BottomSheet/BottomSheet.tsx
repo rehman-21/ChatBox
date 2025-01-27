@@ -1,5 +1,5 @@
-import React, { useCallback, useMemo, useRef } from 'react';
-import { View, Text, StyleSheet, Button } from 'react-native';
+import React, { useCallback, useEffect, useMemo, useRef } from 'react';
+import { View, Text, StyleSheet } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import {
     BottomSheetModal,
@@ -7,14 +7,18 @@ import {
     BottomSheetModalProvider,
 } from '@gorhom/bottom-sheet';
 
-export const Bottom_Sheet = () => {
+export const BottomSheet = ({ children }) => {
     // ref
     const bottomSheetModalRef = useRef<BottomSheetModal>(null);
 
-    // callbacks
-    const handlePresentModalPress = useCallback(() => {
+    // snap points
+    const snapPoints = useMemo(() => ["100%", "100%"], []);
+
+    // Open the bottom sheet automatically on render
+    useEffect(() => {
         bottomSheetModalRef.current?.present();
     }, []);
+
     const handleSheetChanges = useCallback((index: number) => {
         console.log('handleSheetChanges', index);
     }, []);
@@ -23,17 +27,13 @@ export const Bottom_Sheet = () => {
     return (
         <GestureHandlerRootView style={styles.container}>
             <BottomSheetModalProvider>
-                <Button
-                    onPress={handlePresentModalPress}
-                    title="Present Modal"
-                    color="black"
-                />
                 <BottomSheetModal
                     ref={bottomSheetModalRef}
                     onChange={handleSheetChanges}
+                    snapPoints={snapPoints}
                 >
                     <BottomSheetView style={styles.contentContainer}>
-                        <Text>Awesome 🎉</Text>
+                        {children}
                     </BottomSheetView>
                 </BottomSheetModal>
             </BottomSheetModalProvider>
@@ -46,7 +46,6 @@ const styles = StyleSheet.create({
         flex: 1,
         padding: 24,
         justifyContent: 'center',
-        backgroundColor: 'grey',
     },
     contentContainer: {
         flex: 1,
