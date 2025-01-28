@@ -17,7 +17,7 @@ export const Navigations = () => {
             headerShown: false,
             gestureEnabled: false,
           }}>
-          {/* <Stack.Screen name={ROUTES.AUTH_STACK} component={AuthStack} /> */}
+          <Stack.Screen name={ROUTES.AUTH_STACK} component={AuthStack} />
           {/* <Stack.Screen name={ROUTES.APP_STACK} component={AppStack} /> */}
           <Stack.Screen name={ROUTES.MY_TAB} component={MyTab} />
         </Stack.Navigator>

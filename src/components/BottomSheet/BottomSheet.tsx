@@ -9,7 +9,7 @@ import {
 
 export const BottomSheet = ({ children }) => {
     // ref
-    const bottomSheetModalRef = useRef<BottomSheetModal>(null);
+    const bottomSheetModalRef = useRef<BottomSheetModal>(true);
 
     // snap points
     const snapPoints = useMemo(() => ["100%", "100%"], []);
@@ -19,9 +19,7 @@ export const BottomSheet = ({ children }) => {
         bottomSheetModalRef.current?.present();
     }, []);
 
-    const handleSheetChanges = useCallback((index: number) => {
-        console.log('handleSheetChanges', index);
-    }, []);
+
 
     // renders
     return (
@@ -29,7 +27,6 @@ export const BottomSheet = ({ children }) => {
             <BottomSheetModalProvider>
                 <BottomSheetModal
                     ref={bottomSheetModalRef}
-                    onChange={handleSheetChanges}
                     snapPoints={snapPoints}
                 >
                     <BottomSheetView style={styles.contentContainer}>
@@ -44,11 +41,8 @@ export const BottomSheet = ({ children }) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        padding: 24,
-        justifyContent: 'center',
     },
     contentContainer: {
         flex: 1,
-        alignItems: 'center',
     },
 });

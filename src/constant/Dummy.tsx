@@ -1,10 +1,13 @@
-const data = {
+
+export const chatData = {
     statuses: [
-        { id: 1, name: 'My status', image: 'https://via.placeholder.com/50', isMyStatus: true },
-        { id: 2, name: 'Adil', image: 'https://via.placeholder.com/50' },
-        { id: 3, name: 'Marina', image: 'https://via.placeholder.com/50' },
-        { id: 4, name: 'Dean', image: 'https://via.placeholder.com/50' },
-        { id: 5, name: 'Max', image: 'https://via.placeholder.com/50' },
+        { id: 1, name: 'My status', image: require('../asset/images/User-1.png'), isMyStatus: true },
+        { id: 2, name: 'Adil', image: require('../asset/images/User-2.png') },
+        { id: 3, name: 'Marina', image: require('../asset/images/User-3.png') },
+        { id: 4, name: 'Dean', image: require('../asset/images/User-1.png') },
+        { id: 5, name: 'Max', image: require('../asset/images/User-3.png') },
+        { id: 6, name: 'Max', image: require('../asset/images/User-1.png') },
+        { id: 7, name: 'Max', image: require('../asset/images/User-2.png') },
     ],
     chats: [
         {
@@ -12,15 +15,15 @@ const data = {
             name: 'Alex Linderson',
             message: 'How are you today?',
             time: '2 min ago',
-            image: 'https://via.placeholder.com/50',
+            image: require('../asset/images/User-1.png'),
             unreadCount: 3,
         },
         {
             id: 2,
-            name: 'Team Align',
+            name: 'Jack',
             message: 'Don’t miss to attend the meeting.',
             time: '2 min ago',
-            image: 'https://via.placeholder.com/50',
+            image: require('../asset/images/User-3.png'),
             unreadCount: 4,
         },
         {
@@ -28,14 +31,42 @@ const data = {
             name: 'John Araham',
             message: 'Hey! Can you join the meeting?',
             time: '2 min ago',
-            image: 'https://via.placeholder.com/50',
+            image: require('../asset/images/User-2.png'),
         },
         {
             id: 4,
             name: 'Sabila Sayma',
             message: 'How are you today?',
             time: '2 min ago',
-            image: 'https://via.placeholder.com/50',
+            image: require('../asset/images/User-1.png'),
+        },
+        {
+            id: 5,
+            name: 'Sabila Sayma',
+            message: 'How are you today?',
+            time: '2 min ago',
+            image: require('../asset/images/User-2.png'),
+        },
+        {
+            id: 6,
+            name: 'Sabila Sayma',
+            message: 'How are you today?',
+            time: '2 min ago',
+            image: require('../asset/images/User-1.png'),
+        },
+        {
+            id: 7,
+            name: 'Sabila Sayma',
+            message: 'How are you today?',
+            time: '2 min ago',
+            image: require('../asset/images/User-1.png'),
+        },
+        {
+            id: 8,
+            name: 'Sabila Sayma',
+            message: 'How are you today?',
+            time: '2 min ago',
+            image: require('../asset/images/User-1.png'),
         },
     ],
 };
