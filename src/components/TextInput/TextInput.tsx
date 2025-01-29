@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { StyleSheet, TextInput, View, Text } from 'react-native';
 import { sizes } from '../../constant/size';
+import { useTheme } from '../../Context/ThemeContext';
 
 interface CustomTextInputProps {
     placeholder?: string;
+    placeholderTextColor?: string;
     value?: string;
     onChangeText?: (text: string) => void;
     secureTextEntry?: boolean;
@@ -13,36 +15,31 @@ interface CustomTextInputProps {
 
 export const CustomTextInput: React.FC<CustomTextInputProps> = ({
     placeholder,
+    placeholderTextColor,
     value,
     onChangeText,
     secureTextEntry = false,
     keyboardType = 'default',
     style = {},
 }) => {
+
+    const { theme } = useTheme()
     return (
-        <View style={styles.container}>
-            <TextInput
-                style={[styles.input, style]}
-                placeholder={placeholder}
-                value={value}
-                onChangeText={onChangeText}
-                secureTextEntry={secureTextEntry}
-                keyboardType={keyboardType}
-                placeholderTextColor={'#5EBAAE'}
-            />
-        </View>
+        <TextInput
+            style={[styles.input, style]}
+            placeholder={placeholder}
+            value={value}
+            onChangeText={onChangeText}
+            secureTextEntry={secureTextEntry}
+            keyboardType={keyboardType}
+            placeholderTextColor={placeholderTextColor}
+        />
     );
 };
 
 const styles = StyleSheet.create({
-    container: {
-        marginVertical: 10,
-        justifyContent: 'center',
-    },
+
     input: {
         height: sizes.hp_8,
-        borderBottomWidth: 0.3,
-        borderColor: '#595E5C',
-        fontWeight: '600',
     },
 });

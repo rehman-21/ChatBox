@@ -16,6 +16,7 @@ import { COLORS } from '../../constant/Colors';
 import { sizes } from '../../constant/size';
 import Animated, { FadeInLeft, FadeInRight } from 'react-native-reanimated';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import { useTheme } from '@react-navigation/native';
 
 export const SignUp = () => {
     const [name, setName] = useState('');
@@ -50,7 +51,6 @@ export const SignUp = () => {
     return (
         <KeyboardAwareScrollView
             contentContainerStyle={{ flexGrow: 1 }}
-            enableOnAndroid={true}
             extraScrollHeight={20}
             keyboardShouldPersistTaps="handled"
         >
@@ -64,6 +64,7 @@ export const SignUp = () => {
 
                 <Animated.View entering={FadeInLeft.delay(200).duration(600)}>
                     <CustomTextInput
+                        style={styles.input}
                         placeholder="Your name"
                         value={name}
                         onChangeText={setName}
@@ -71,6 +72,7 @@ export const SignUp = () => {
                 </Animated.View>
                 <Animated.View entering={FadeInRight.delay(300).duration(600)}>
                     <CustomTextInput
+
                         placeholder="Your email"
                         value={email}
                         onChangeText={setEmail}
@@ -142,10 +144,13 @@ const styles = StyleSheet.create({
     },
     input: {
         marginBottom: sizes.wp_2,
+        color: COLORS.black,
+        borderBottomWidth: 0.3,
+        marginVertical: sizes.hp_2
     },
     errorInput: {
         borderColor: COLORS.red,
-        borderBottomWidth: 1,
+        borderBottomWidth: 0.3,
     },
     errorText: {
         color: COLORS.red,

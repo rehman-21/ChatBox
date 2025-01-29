@@ -7,8 +7,12 @@ import { ThemedView } from '../../CoreComponent/ThemedView';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import { DIMENSIONS } from '../../constant/Dimensions';
 import { sizes } from '../../constant/size';
+import { useNavigation } from '@react-navigation/native';
+import { ROUTES } from '../../constant/routes';
+
 
 export const Home = () => {
+    const navigation = useNavigation()
     return (
         <View style={{ flex: 1, }}>
             <ThemedView style={{ padding: 20, backgroundColor: '#000' }}>
@@ -38,7 +42,7 @@ export const Home = () => {
                 </View>
                 <StatusUsers />
             </ThemedView>
-            <ChatSheet />
+            <ChatSheet NAVIGATION={() => navigation.navigate(ROUTES.APP_STACK, { screen: ROUTES.MESSAGES_SCREEN })} />
         </View>
     );
 };
