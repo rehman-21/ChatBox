@@ -17,6 +17,8 @@ export const sizes = {
   medium: 16,
   large: 24,
   extraLarge: 32,
+  size7: 7,
+  size9: 9,
   size10: 10,
   size12: 12,
   size14: 14,

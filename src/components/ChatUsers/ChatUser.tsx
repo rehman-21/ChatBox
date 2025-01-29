@@ -14,10 +14,15 @@ import { COLORS } from '../../constant/Colors';
 import { DIMENSIONS } from '../../constant/Dimensions';
 import { sizes } from '../../constant/size';
 
-export const ChatUser = () => {
+interface messageProps {
+    onPress: () => void
+}
+
+
+export const ChatUser: React.FC<messageProps> = ({ onPress }) => {
     const renderChat = ({ item }) => {
         return (
-            <TouchableOpacity style={styles.chatItem}>
+            <TouchableOpacity onPress={onPress} style={styles.chatItem}>
                 <Image source={item.image} style={styles.chatImage} />
                 <View style={styles.chatDetails}>
                     <ThemedText style={styles.chatName}>{item.name}</ThemedText>

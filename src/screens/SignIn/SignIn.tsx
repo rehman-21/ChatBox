@@ -1,18 +1,39 @@
 import React, { useState } from 'react';
-import { Alert, Keyboard, KeyboardAvoidingView, Platform, StyleSheet, Text, TouchableWithoutFeedback, View } from 'react-native';
+import {
+    Alert,
+    Keyboard,
+    KeyboardAvoidingView,
+    Platform,
+    StyleSheet,
+    Text,
+    TouchableWithoutFeedback,
+    View,
+} from 'react-native';
 import { ThemedView } from '../../CoreComponent/ThemedView';
-import { CustomTextInput, Description, GoBack, H1, Links, Separater } from '../../components';
+import {
+    CustomTextInput,
+    Description,
+    GoBack,
+    H1,
+    Links,
+    Separater,
+} from '../../components';
 import { sizes } from '../../constant/size';
 import { SocialBtn } from '../../components/SocialBtn/SocialBtn';
 import { PNG } from '../../constant/svg';
-import Animated, { FadeInDown, FadeInLeft, FadeInRight } from 'react-native-reanimated';
+import Animated, {
+    FadeInDown,
+    FadeInLeft,
+    FadeInRight,
+} from 'react-native-reanimated';
 import CustomButton from '../../components/Button/Button';
 import { COLORS } from '../../constant/Colors';
 import { useNavigation } from '@react-navigation/native';
 import { ROUTES } from '../../constant/routes';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 export const SignIn = () => {
-    const navigation = useNavigation()
+    const navigation = useNavigation();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
@@ -26,10 +47,10 @@ export const SignIn = () => {
     };
 
     return (
-        <KeyboardAvoidingView
-            style={{ flex: 1 }}
-            behavior={Platform.OS === 'ios' ? 'padding' : undefined}
-        >
+        <KeyboardAwareScrollView
+            contentContainerStyle={{ flexGrow: 1 }}
+            extraScrollHeight={20}
+            keyboardShouldPersistTaps="handled">
             <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
                 <ThemedView style={styles.container}>
                     <GoBack />
@@ -40,26 +61,29 @@ export const SignIn = () => {
                     />
                     <Animated.View
                         entering={FadeInDown.delay(1100).duration(600)}
-                        style={styles.SocialContainer}
-                    >
-                        <SocialBtn BtnStyle={styles.btnContainer} source={PNG.FACEBOOK_ICON} />
-                        <SocialBtn BtnStyle={styles.btnContainer} source={PNG.GOOGLE_ICON} />
+                        style={styles.SocialContainer}>
+                        <SocialBtn
+                            BtnStyle={styles.btnContainer}
+                            source={PNG.FACEBOOK_ICON}
+                        />
+                        <SocialBtn
+                            BtnStyle={styles.btnContainer}
+                            source={PNG.GOOGLE_ICON}
+                        />
                         <SocialBtn BtnStyle={styles.btnContainer} source={PNG.APPLE} />
                     </Animated.View>
                     <Separater textStyle={{ color: COLORS.black }} />
-                    <Animated.View
-                        entering={FadeInLeft.delay(1100).duration(600)}
-                    >
+                    <Animated.View entering={FadeInLeft.delay(1100).duration(600)}>
                         <CustomTextInput
+                            style={styles.input}
                             placeholder="Your email"
                             value={email}
                             onChangeText={setEmail}
                         />
                     </Animated.View>
-                    <Animated.View
-                        entering={FadeInRight.delay(1100).duration(600)}
-                    >
+                    <Animated.View entering={FadeInRight.delay(1100).duration(600)}>
                         <CustomTextInput
+                            style={styles.input}
                             secureTextEntry
                             placeholder="Password"
                             value={password}
@@ -74,16 +98,15 @@ export const SignIn = () => {
                                 isFormValid && styles.loginButtonActive,
                             ]}
                             onPress={submit}
-                            textStyle={
-                                { color: isFormValid ? COLORS.white : COLORS.off_white_gray }
-                            }
-
+                            textStyle={{
+                                color: isFormValid ? COLORS.white : COLORS.off_white_gray,
+                            }}
                         />
                         <Links linkStyle={styles.forgot} link="Forgot Passwor?" />
                     </View>
                 </ThemedView>
             </TouchableWithoutFeedback>
-        </KeyboardAvoidingView>
+        </KeyboardAwareScrollView>
     );
 };
 
@@ -97,7 +120,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         marginVertical: sizes.wp_2,
-
     },
     btnContainer: {
         backgroundColor: COLORS.white,
@@ -111,12 +133,17 @@ const styles = StyleSheet.create({
     },
     forgot: {
         color: COLORS.off_white_green,
-        fontSize: sizes.size14
+        fontSize: sizes.size14,
     },
     loginButton: {
         backgroundColor: COLORS.off_white,
     },
     loginButtonActive: {
         backgroundColor: COLORS.off_white_green,
-    }
-})
+    },
+    input: {
+        borderBottomWidth: 0.4,
+        borderColor: COLORS.black_gray,
+        marginVertical: sizes.hp_2
+    },
+});
