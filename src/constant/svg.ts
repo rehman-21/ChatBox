@@ -6,6 +6,9 @@ import SettingIcon from '../asset/svg/settings.svg';
 import SettingIconCopy from '../asset/svg/settings2.svg';
 import ProfileIcon from '../asset/svg/Profile.svg';
 import ProfileIconCopy from '../asset/svg/Profile2.svg';
+import  DocumentsIcon from '../asset/svg/Documents.svg';
+import  AttechIcon from '../asset/svg/Attech.svg';
+import  SendIcon from '../asset/svg/Send.svg';
 
 export const SVG = {
   SPLASH_LOGO: require('../asset/svg/Logo.svg'),
@@ -28,5 +31,9 @@ export {
   MessageIconCopy,
   CallIconCopy,
   SettingIconCopy,
-  ProfileIconCopy
+  ProfileIconCopy,
+  DocumentsIcon,
+  AttechIcon,
+  SendIcon,
+
 };

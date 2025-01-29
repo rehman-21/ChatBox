@@ -8,26 +8,27 @@ import {
 } from '@gorhom/bottom-sheet';
 
 export const BottomSheet = ({ children }) => {
-    // ref
-    const bottomSheetModalRef = useRef<BottomSheetModal>(true);
+    const bottomSheetModalRef = useRef<BottomSheetModal>(null);
 
-    // snap points
     const snapPoints = useMemo(() => ["100%", "100%"], []);
 
-    // Open the bottom sheet automatically on render
     useEffect(() => {
         bottomSheetModalRef.current?.present();
     }, []);
 
+    const handleSheetChanges = useCallback((index: number) => {
+        console.log('handleSheetChanges', index);
+    }, []);
 
-
-    // renders
     return (
         <GestureHandlerRootView style={styles.container}>
             <BottomSheetModalProvider>
                 <BottomSheetModal
                     ref={bottomSheetModalRef}
                     snapPoints={snapPoints}
+                    onChange={handleSheetChanges}
+                    enablePanDownToClose={false}
+                    dismissOnPanDown={false}
                 >
                     <BottomSheetView style={styles.contentContainer}>
                         {children}
