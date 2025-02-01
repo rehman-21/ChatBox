@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { ThemedText } from '../../CoreComponent/ThemedText';
-import { CallSheet, Header, StatusUsers } from '../../components';
+import { BottomSheet, CallSheet, ChatUser, Header, StatusUsers } from '../../components';
 import { ChatSheet } from '../../components/ChatSheet/ChatSheet';
 import { ThemedView } from '../../CoreComponent/ThemedView';
 import AntDesign from 'react-native-vector-icons/AntDesign';
@@ -42,7 +42,9 @@ export const Home = () => {
                 </View>
                 <StatusUsers />
             </ThemedView>
-            <ChatSheet NAVIGATION={() => navigation.navigate(ROUTES.APP_STACK, { screen: ROUTES.MESSAGES_SCREEN })} />
+            <BottomSheet>
+                <ChatUser />
+            </BottomSheet>
         </View>
     );
 };

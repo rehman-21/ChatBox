@@ -8,8 +8,12 @@ const { Navigator, Screen } = Stack;
 
 export const AppStack = () => {
   return (
-    <Navigator screenOptions={{ headerShown: false }}>
-      <Screen name={ROUTES.MESSAGES_SCREEN} component={MessageScreen} />
+    <Navigator
+      screenOptions={{ headerShown: false }}>
+      <Screen
+        name={ROUTES.MESSAGES_SCREEN}
+        component={MessageScreen}
+      />
     </Navigator>
   );
 };

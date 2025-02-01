@@ -5,7 +5,9 @@ import { useTheme } from '../../Context/ThemeContext';
 import { sizes } from '../../constant/size';
 import { COLORS } from '../../constant/Colors';
 
-export const ChatHeader = () => {
+
+
+export const ChatHeader: React.FC = ({ userName }) => {
     const { theme } = useTheme();
 
     return (
@@ -18,10 +20,13 @@ export const ChatHeader = () => {
                     <Image source={require('../../asset/images/User-1.png')} />
                 </TouchableOpacity>
                 <View style={{ marginLeft: sizes.wp_1 }}>
-                    <Text style={[styles.title, { color: theme.text }]}>name</Text>
+                    <Text style={[styles.title, { color: theme.text }]}>
+                        {userName || 'User'}
+                    </Text>
                     <Text style={[styles.title, {
                         color: COLORS.black,
                         fontSize: sizes.size10,
+                        letterSpacing: 1,
                     }]}>
                         Active Now
                     </Text>
