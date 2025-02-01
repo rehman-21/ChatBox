@@ -3,11 +3,11 @@ import { StyleSheet, View, StyleProp, ViewStyle } from 'react-native';
 import { ThemedText } from '../../CoreComponent/ThemedText';
 
 interface HeaderProps {
-    Logo?: React.ReactNode; // Optional React component or element for the logo
-    title: string; // Title text for the header
-    Icon?: React.ReactNode; // Optional React component or element for an icon
-    I?: React.ReactNode; // Optional React component or element for additional content
-    containerStyle?: StyleProp<ViewStyle>; // Optional custom styles for the container
+    Logo?: React.ReactNode;
+    title: string;
+    Icon?: React.ReactNode;
+    I?: React.ReactNode;
+    containerStyle?: StyleProp<ViewStyle>;
 }
 
 export const Header: React.FC<HeaderProps> = ({ Logo, title, Icon, I, containerStyle }) => {

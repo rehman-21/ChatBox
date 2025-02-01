@@ -1,3 +1,7 @@
+//& _________________________  CHATS DATA _______________>
+
+import { CameraIcon } from "./svg";
+
 export const chatData = {
     statuses: [
         {
@@ -72,9 +76,46 @@ export const chatData = {
             time: '2 min ago',
             image: require('../asset/images/User-1.png'),
         },
+        {
+            id: 9,
+            name: 'Sabila Sayma',
+            message: 'How are you today?',
+            time: '2 min ago',
+            image: require('../asset/images/User-1.png'),
+        },
+        {
+            id: 10,
+            name: 'Sabila Sayma',
+            message: 'How are you today?',
+            time: '2 min ago',
+            image: require('../asset/images/User-1.png'),
+        },
+        {
+            id: 11,
+            name: 'Sabila Sayma',
+            message: 'How are you today?',
+            time: '2 min ago',
+            image: require('../asset/images/User-1.png'),
+        },
+        {
+            id: 12,
+            name: 'Sabila Sayma',
+            message: 'How are you today?',
+            time: '2 min ago',
+            image: require('../asset/images/User-1.png'),
+        },
+        {
+            id: 13,
+            name: 'Sabila Sayma',
+            message: 'How are you today?',
+            time: '2 min ago',
+            image: require('../asset/images/User-1.png'),
+        },
     ],
 };
+//* ===========================================================>
 
+//& _________________________  MESSAGES DATA _______________>
 export const messagesData = [
     { id: '1', sender: 'me', text: 'Hello! Jhon abraham', time: '09:25 AM' },
     {
@@ -99,3 +140,46 @@ export const messagesData = [
         time: '09:25 AM',
     },
 ];
+//*=======================================================>
+
+//& _________________________ SHARE CONTENT _______________>
+
+export const shareContents = [
+    {
+        id: '1',
+        icon: <CameraIcon />,
+        name: 'camera',
+        description: 'Share your files'
+    },
+    {
+        id: '2',
+        icon: <CameraIcon />,
+        name: 'camera',
+        description: 'Share your files'
+    },
+    {
+        id: '3',
+        icon: <CameraIcon />,
+        name: 'camera',
+        description: 'Share your files'
+    },
+    {
+        id: '4',
+        icon: <CameraIcon />,
+        name: 'camera',
+        description: 'Share your files'
+    },
+    {
+        id: '5',
+        icon: <CameraIcon />,
+        name: 'camera',
+        description: 'Share your files'
+    },
+    {
+        id: '6',
+        icon: <CameraIcon />,
+        name: 'camera',
+        description: 'Share your files'
+    }
+]
+

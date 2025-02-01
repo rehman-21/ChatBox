@@ -7,7 +7,7 @@ import {
     BottomSheetModalProvider,
 } from '@gorhom/bottom-sheet';
 
-export const BottomSheet = ({ children }) => {
+export const BottomSheet: React.FC = ({ children }) => {
     const bottomSheetModalRef = useRef<BottomSheetModal>(null);
 
     const snapPoints = useMemo(() => ["100%", "100%"], []);

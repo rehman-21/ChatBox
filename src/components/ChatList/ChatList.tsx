@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
-import { View, Text, FlatList, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, FlatList, TouchableOpacity, StyleSheet, Modal, TextInput } from 'react-native';
 import { useTheme } from '../../Context/ThemeContext';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import { CustomTextInput } from '../TextInput/TextInput';
 import { COLORS } from '../../constant/Colors';
 import { AttechIcon, DocumentsIcon, SendIcon } from '../../constant/svg';
 import { DIMENSIONS } from '../../constant/Dimensions';
 import { sizes } from '../../constant/size';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import { ShareContent } from '../ShareContent/ShareContent';
+import { BottomSheet } from '../BottomSheet/BottomSheet';
+
 
 interface Message {
     id: string;
@@ -16,17 +18,18 @@ interface Message {
     audio?: string;
 }
 
-export const ChatList = () => {
+export const ChatList: React.FC = () => {
     const { theme } = useTheme();
     const [messages, setMessages] = useState<Message[]>([
-        { id: '1', text: 'Hello! Jhon Abraham', type: 'sent' },
-        { id: '2', text: 'Hello! Nazrul How are you?', type: 'received' },
+        { id: '1', text: 'Hello! John Abraham', type: 'sent' },
+        { id: '2', text: 'Hello! Nazrul, How are you?', type: 'received' },
         { id: '3', text: 'You did your job well!', type: 'sent' },
         { id: '4', text: 'Have a great working week!!', type: 'received' },
         { id: '5', text: 'Hope you like it', type: 'received' },
         { id: '6', audio: '00:16', type: 'sent' },
     ]);
     const [isSend, setIsSend] = useState('');
+    const [isModalVisible, setModalVisible] = useState(false);
 
     const sendMessage = () => {
         if (isSend.trim().length > 0) {
@@ -39,7 +42,6 @@ export const ChatList = () => {
             setIsSend('');
         }
     };
-
     const renderMessage = ({ item }: { item: Message }) => (
         <View
             style={[
@@ -47,11 +49,7 @@ export const ChatList = () => {
                 item.type === 'sent' ? styles.sent : styles.received,
             ]}>
             {item.text && (
-                <Text
-                    style={[
-                        styles.messageText,
-                        { color: item.type === 'sent' ? COLORS.white : COLORS.black },
-                    ]}>
+                <Text style={[styles.messageText, { color: item.type === 'sent' ? COLORS.white : COLORS.black }]}>
                     {item.text}
                 </Text>
             )}
@@ -66,35 +64,27 @@ export const ChatList = () => {
 
     return (
         <>
-            <KeyboardAwareScrollView
-                contentContainerStyle={{ flexGrow: 1 }}
-                extraScrollHeight={20}
-                keyboardShouldPersistTaps="handled"
-            >
+            <KeyboardAwareScrollView contentContainerStyle={{ flexGrow: 1 }} extraScrollHeight={20} keyboardShouldPersistTaps="handled">
                 <View style={styles.container}>
-                    {/* Chat Messages */}
                     <FlatList
                         data={messages}
                         renderItem={renderMessage}
                         keyExtractor={item => item.id}
+                        keyboardShouldPersistTaps="handled"
                     />
-
-                    {/* Chat Input */}
-
                 </View>
             </KeyboardAwareScrollView>
+
+            {/* Chat Input */}
             <View style={styles.chatInputContainer}>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={() => setModalVisible(true)}>
                     <AttechIcon />
                 </TouchableOpacity>
                 <View style={styles.inputContainer}>
-                    <CustomTextInput
-                        style={[
-                            styles.input,
-                            { color: theme.text, width: DIMENSIONS.WIDTH * 0.48 },
-                        ]}
+                    <TextInput
+                        style={[styles.input, { color: theme.text, width: DIMENSIONS.WIDTH * 0.48 }]}
                         placeholderTextColor={COLORS.off_white_gray}
-                        placeholder={'Write your Message'}
+                        placeholder="Write your Message"
                         value={isSend}
                         onChangeText={setIsSend}
                     />
@@ -109,24 +99,18 @@ export const ChatList = () => {
                 ) : (
                     <View style={styles.iconRow}>
                         <TouchableOpacity style={styles.iconSpacing}>
-                            <Ionicons
-                                name="camera-outline"
-                                size={25}
-                                color={COLORS.black_gray}
-                            />
+                            <Ionicons name="camera-outline" size={25} color={COLORS.black_gray} />
                         </TouchableOpacity>
                         <TouchableOpacity>
-                            <Ionicons
-                                name="mic-outline"
-                                size={25}
-                                color={COLORS.black_gray}
-                            />
+                            <Ionicons name="mic-outline" size={25} color={COLORS.black_gray} />
                         </TouchableOpacity>
                     </View>
                 )}
-            </View>
-        </>
 
+            </View>
+            <ShareContent isVisible={isModalVisible} onClose={() => setModalVisible(false)} />
+
+        </>
     );
 };
 
@@ -140,29 +124,29 @@ const styles = StyleSheet.create({
         padding: 12,
         marginVertical: 5,
         borderRadius: 10,
-        maxWidth: '70%',
+        maxWidth: '100%',
     },
     sent: {
         alignSelf: 'flex-end',
-        backgroundColor: '#00A884'
+        backgroundColor: '#00A884',
     },
     received: {
         alignSelf: 'flex-start',
-        backgroundColor: '#E5E5E5'
+        backgroundColor: '#E5E5E5',
     },
     messageText: {
         fontSize: sizes.size12,
-        color: COLORS.black
+        color: COLORS.black,
     },
     audioContainer: {
         flexDirection: 'row',
-        alignItems: 'center'
+        alignItems: 'center',
     },
     audioText: {
         marginLeft: 10,
-        color: 'white', fontSize: 16
+        color: 'white',
+        fontSize: 16,
     },
-
     chatInputContainer: {
         flexDirection: 'row',
         alignItems: 'center',
@@ -183,13 +167,31 @@ const styles = StyleSheet.create({
     },
     input: {
         fontSize: sizes.size12,
-        color: COLORS.off_white_gray
+        color: COLORS.off_white_gray,
     },
     iconRow: {
         flexDirection: 'row',
-        alignItems: 'center'
+        alignItems: 'center',
     },
     iconSpacing: {
-        marginRight: 8
+        marginRight: 8,
+    },
+    modalBackground: {
+        backgroundColor: 'rgba(0, 0, 0, 0.5)',
+        justifyContent: 'flex-end',
+        borderWidth: 1,
+        flex: 1
+    },
+    modalContainer: {
+        backgroundColor: COLORS.white,
+        padding: 20,
+        borderRadius: 10,
+    },
+    closeButton: {
+        alignSelf: 'flex-start',
+    },
+    modalContent: {
+        flex: 1,
     },
 });
+
