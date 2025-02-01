@@ -18,10 +18,9 @@ export const SocialBtn: React.FC<BtnProps> = ({ source, BtnStyle }) => {
 
 const styles = StyleSheet.create({
     button: {
-        paddingVertical: 10,
         borderRadius: 50,
-        height: hp(6),
-        width: wp(12),
+        height: DIMENSIONS.HEIGHT * 0.06,
+        width: DIMENSIONS.WIDTH * 0.12,
         borderWidth: 1,
         borderColor: '#FFF',
         alignItems: 'center',
@@ -31,8 +30,8 @@ const styles = StyleSheet.create({
         marginVertical: hp(2)
     },
     image: {
-        height: hp(3),
-        width: wp(8),
+        height: DIMENSIONS.HEIGHT * 0.06,
+        width: DIMENSIONS.WIDTH * 0.07,
         resizeMode: 'contain',
     },
 });

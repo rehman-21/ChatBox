@@ -68,6 +68,7 @@ export const SignUp = () => {
                         placeholder="Your name"
                         value={name}
                         onChangeText={setName}
+                        placeholderTextColor={COLORS.off_white_green}
                     />
                 </Animated.View>
                 <Animated.View entering={FadeInRight.delay(300).duration(600)}>
@@ -76,6 +77,7 @@ export const SignUp = () => {
                         placeholder="Your email"
                         value={email}
                         onChangeText={setEmail}
+                        placeholderTextColor={COLORS.off_white_green}
                         style={[
                             styles.input,
                             errors.email ? styles.errorInput : null,
@@ -89,6 +91,7 @@ export const SignUp = () => {
                         placeholder="Password"
                         value={password}
                         onChangeText={setPassword}
+                        placeholderTextColor={COLORS.off_white_green}
                         style={[
                             styles.input,
                             errors.password ? styles.errorInput : null,
@@ -104,6 +107,7 @@ export const SignUp = () => {
                         placeholder="Confirm Password"
                         value={confirmPass}
                         onChangeText={setConfirmPass}
+                        placeholderTextColor={COLORS.off_white_green}
                         style={[
                             styles.input,
                             errors.confirmPass ? styles.errorInput : null,
@@ -146,7 +150,9 @@ const styles = StyleSheet.create({
         marginBottom: sizes.wp_2,
         color: COLORS.black,
         borderBottomWidth: 0.3,
-        marginVertical: sizes.hp_2
+        marginVertical: sizes.hp_2,
+        fontSize: sizes.size15,
+        fontWeight: '500'
     },
     errorInput: {
         borderColor: COLORS.red,

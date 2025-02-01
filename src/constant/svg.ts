@@ -6,9 +6,16 @@ import SettingIcon from '../asset/svg/settings.svg';
 import SettingIconCopy from '../asset/svg/settings2.svg';
 import ProfileIcon from '../asset/svg/Profile.svg';
 import ProfileIconCopy from '../asset/svg/Profile2.svg';
-import  DocumentsIcon from '../asset/svg/Documents.svg';
-import  AttechIcon from '../asset/svg/Attech.svg';
-import  SendIcon from '../asset/svg/Send.svg';
+import DocumentsIcon from '../asset/svg/Documents.svg';
+import AttechIcon from '../asset/svg/Attech.svg';
+import SendIcon from '../asset/svg/Send.svg';
+import LocationIcon from '../asset/svg/Location.svg';
+import MediaIcon from '../asset/svg/media.svg';
+import RemoveIcon from '../asset/svg/remove.svg';
+import UserIcon from '../asset/svg/user.svg';
+import DocIcon from '../asset/svg/doc.svg';
+import ChartIcon from '../asset/svg/Chart.svg';
+import CameraIcon from '../asset/svg/Chart.svg';
 
 export const SVG = {
   SPLASH_LOGO: require('../asset/svg/Logo.svg'),
@@ -35,5 +42,11 @@ export {
   DocumentsIcon,
   AttechIcon,
   SendIcon,
-
+  LocationIcon,
+  MediaIcon,
+  RemoveIcon,
+  UserIcon,
+  DocIcon,
+  ChartIcon,
+  CameraIcon,
 };

@@ -79,6 +79,7 @@ export const SignIn = () => {
                             placeholder="Your email"
                             value={email}
                             onChangeText={setEmail}
+                            placeholderTextColor={COLORS.off_white_green}
                         />
                     </Animated.View>
                     <Animated.View entering={FadeInRight.delay(1100).duration(600)}>
@@ -88,6 +89,7 @@ export const SignIn = () => {
                             placeholder="Password"
                             value={password}
                             onChangeText={setPassword}
+                            placeholderTextColor={COLORS.off_white_green}
                         />
                     </Animated.View>
                     <View style={styles.footer}>
@@ -144,6 +146,9 @@ const styles = StyleSheet.create({
     input: {
         borderBottomWidth: 0.4,
         borderColor: COLORS.black_gray,
-        marginVertical: sizes.hp_2
+        marginVertical: sizes.hp_2,
+        fontSize: sizes.size15,
+        fontWeight: '500'
+
     },
 });

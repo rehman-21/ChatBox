@@ -35,11 +35,12 @@ const styles = StyleSheet.create({
         marginRight: 15,
     },
     statusImage: {
-        width: DIMENSIONS.WIDTH * 0.14,
-        height: DIMENSIONS.HEIGHT * 0.07,
-        borderRadius: 25,
+        width: DIMENSIONS.WIDTH * 0.12,
+        height: DIMENSIONS.HEIGHT * 0.06,
+        borderRadius: 50,
         borderWidth: 2,
         borderColor: COLORS.highlight,
+        resizeMode: 'contain'
     },
     statusName: {
         marginTop: 5,
