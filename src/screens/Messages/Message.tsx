@@ -18,7 +18,6 @@ export const MessageScreen = ({ }) => {
                 <ChatHeader userName={userName} />
                 <View style={{ flex: 1 }}>
                     <ChatList />
-                    {/* <ShareContent /> */}
                 </View>
             </ThemedView>
         </>

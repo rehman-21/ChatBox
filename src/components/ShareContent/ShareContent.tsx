@@ -1,20 +1,28 @@
 import React from 'react';
-import { StyleSheet, Text, TouchableOpacity, View, FlatList, Modal } from 'react-native';
+import {
+    StyleSheet,
+    Text,
+    TouchableOpacity,
+    View,
+    FlatList,
+    Modal,
+} from 'react-native';
 import { shareContents } from '../../constant/Dummy';
 import { COLORS } from '../../constant/Colors';
-import { RemoveIcon } from '../../constant/svg';
+import { RemoveIcon, CameraIcon } from '../../constant/svg'; // Import CameraIcon if it's an SVG icon
 import { DIMENSIONS } from '../../constant/Dimensions';
-import Svg from 'react-native-svg';
+import { sizes } from '../../constant/size';
 
-export const ShareContent: React.FC<{ isVisible: boolean; onClose: () => void }> = ({ isVisible, onClose }) => {
-
+export const ShareContent: React.FC<{
+    isVisible: boolean;
+    onClose: () => void;
+}> = ({ isVisible, onClose }) => {
     return (
         <Modal
             visible={isVisible}
             transparent
             animationType="slide"
-            onRequestClose={onClose}
-        >
+            onRequestClose={onClose}>
             <View style={styles.modalOverlay}>
                 <View style={styles.container}>
                     <View style={styles.header}>
@@ -26,11 +34,11 @@ export const ShareContent: React.FC<{ isVisible: boolean; onClose: () => void }>
 
                     <FlatList
                         data={shareContents}
-                        keyExtractor={(item, index) => index.toString()}
+                        keyExtractor={item => item.id}
                         renderItem={({ item }) => (
                             <TouchableOpacity style={styles.item}>
-                                <TouchableOpacity>
-                                </TouchableOpacity>
+                                <View style={styles.iconContainer}>{item.icon}</View>
+
                                 <View style={styles.itemContent}>
                                     <Text style={styles.itemName}>{item.name}</Text>
                                     <Text style={styles.itemDescription}>{item.description}</Text>
@@ -48,7 +56,7 @@ const styles = StyleSheet.create({
     modalOverlay: {
         flex: 1,
         backgroundColor: 'rgba(0, 0, 0, 0.5)',
-        justifyContent: 'flex-end'
+        justifyContent: 'flex-end',
     },
     container: {
         padding: 16,
@@ -62,33 +70,38 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         alignItems: 'center',
         marginBottom: 10,
-        width: DIMENSIONS.WIDTH * 0.7
+        width: DIMENSIONS.WIDTH * 0.6,
     },
     closeButton: {
-        padding: 8,
-    },
-    closeText: {
-        fontSize: 24,
-        fontWeight: 'bold',
     },
     title: {
-        fontSize: 18,
-        textAlign: 'center',
-
+        fontSize: sizes.size16,
+        fontWeight: '400'
     },
     item: {
-        padding: 12,
-        borderBottomWidth: 1,
-        borderBottomColor: '#eee',
+
         flexDirection: 'row',
         alignItems: 'center',
     },
+    iconContainer: {
+        marginRight: 12,
+        width: DIMENSIONS.WIDTH * 0.12,
+        height: DIMENSIONS.HEIGHT * 0.06,
+        backgroundColor: '#F2F2F2',
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 50,
+
+    },
     itemContent: {
-        flex: 1,
+        borderBottomWidth: 1,
+        borderBottomColor: '#eee',
+        padding: 16,
+        width: '100%'
     },
     itemName: {
-        fontSize: 16,
-        fontWeight: 'bold',
+        fontSize: sizes.size16,
+        fontWeight: '600',
     },
     itemDescription: {
         fontSize: 14,

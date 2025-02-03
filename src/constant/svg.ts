@@ -15,7 +15,7 @@ import RemoveIcon from '../asset/svg/remove.svg';
 import UserIcon from '../asset/svg/user.svg';
 import DocIcon from '../asset/svg/doc.svg';
 import ChartIcon from '../asset/svg/Chart.svg';
-import CameraIcon from '../asset/svg/Chart.svg';
+import CameraIcon from '../asset/svg/Camera.svg';
 
 export const SVG = {
   SPLASH_LOGO: require('../asset/svg/Logo.svg'),

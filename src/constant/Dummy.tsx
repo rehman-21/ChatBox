@@ -1,6 +1,6 @@
 //& _________________________  CHATS DATA _______________>
 
-import { CameraIcon } from "./svg";
+import { CameraIcon, ChartIcon, DocIcon, LocationIcon, MediaIcon, UserIcon } from "./svg";
 
 export const chatData = {
     statuses: [
@@ -153,33 +153,45 @@ export const shareContents = [
     },
     {
         id: '2',
-        icon: <CameraIcon />,
-        name: 'camera',
+        icon: <DocIcon />,
+        name: 'Documents',
         description: 'Share your files'
     },
     {
         id: '3',
-        icon: <CameraIcon />,
-        name: 'camera',
-        description: 'Share your files'
+        icon: <ChartIcon />,
+        name: 'Create a poll',
+        description: 'Create a poll for any querry'
     },
     {
         id: '4',
-        icon: <CameraIcon />,
-        name: 'camera',
-        description: 'Share your files'
+        icon: <MediaIcon />,
+        name: 'Media',
+        description: 'Share photos and videos'
     },
     {
         id: '5',
-        icon: <CameraIcon />,
-        name: 'camera',
-        description: 'Share your files'
+        icon: <UserIcon />,
+        name: 'Contact',
+        description: 'Share your contacts'
     },
     {
         id: '6',
-        icon: <CameraIcon />,
-        name: 'camera',
-        description: 'Share your files'
+        icon: <LocationIcon />,
+        name: 'Location',
+        description: 'Share your location'
     }
 ]
+
+//*=======================================>
+
+// & ______________________> INVITED MEMBERS _____________________>
+
+export const invitedMembers = [
+    { id: '1', image: require('../asset/images/User-1.png') },
+    { id: '2', image: require('../asset/images/User-1.png') },
+    { id: '3', image: require('../asset/images/User-1.png') },
+    { id: '4', image: require('../asset/images/User-1.png') },
+    { id: '5', image: require('../asset/images/User-1.png') },
+];
 
