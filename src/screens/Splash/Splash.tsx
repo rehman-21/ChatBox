@@ -1,11 +1,10 @@
 import React, { useEffect } from 'react';
-import { StyleSheet } from 'react-native';
 import { ThemedView } from '../../CoreComponent/ThemedView';
-import { ThemedText } from '../../CoreComponent/ThemedText';
 import { SVG } from '../../constant/svg';
-import { Colors } from '../../constant/Colors';
 import { useNavigation } from '@react-navigation/native';
 import { ROUTES } from '../../constant/routes';
+import { Text } from 'react-native-gesture-handler';
+import { styles } from './SplashsStyle';
 
 export const Splash: React.FC = () => {
     const navigation = useNavigation();
@@ -20,21 +19,7 @@ export const Splash: React.FC = () => {
     return (
         <ThemedView style={styles.container}>
             <SVG.SPLASH_LOGO.default />
-            <ThemedText style={styles.title}>ChatBox</ThemedText>
+            <Text style={styles.title}>ChatBox</Text>
         </ThemedView>
     );
 };
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    title: {
-        fontSize: 35,
-        fontStyle: 'italic',
-        fontWeight: '700',
-        paddingTop: 20
-    },
-});

@@ -17,7 +17,8 @@ export const ROUTES = {
   //*=============================================>
   APP_STACK: 'APPSTACK',
   MESSAGES_SCREEN: 'MESSAGES',
-
+  CREATE_GROUP:'CREATEGROUP',
+  CREATE_POLL:'CREATEPOLL',
   //*===============================================>
 
   MY_TAB: 'MYTABS',
