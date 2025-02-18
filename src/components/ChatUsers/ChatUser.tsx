@@ -1,75 +1,51 @@
+import React from 'react';
 import {
     FlatList,
     Image,
-    ScrollView,
     StyleSheet,
-    Text,
     TouchableOpacity,
     View,
 } from 'react-native';
-import React from 'react';
-import { ThemedView } from '../../CoreComponent/ThemedView';
-import { chatData } from '../../constant/Dummy';
 import { ThemedText } from '../../CoreComponent/ThemedText';
 import { COLORS } from '../../constant/Colors';
 import { DIMENSIONS } from '../../constant/Dimensions';
 import { sizes } from '../../constant/size';
-import { useNavigation } from '@react-navigation/native';
-import { ROUTES } from '../../constant/routes';
 
-
-
-export const ChatUser: React.FC = () => {
-    const navigation = useNavigation();
-
-    const renderChat = ({ item }) => {
-        return (
-            <TouchableOpacity
-                onPress={() => {
-                    navigation.navigate(ROUTES.APP_STACK, {
-                        screen: ROUTES.MESSAGES_SCREEN,
-                    });
-
-                }}
-                style={styles.chatItem}>
-                <Image source={item.image} style={styles.chatImage} />
-                <View style={styles.chatDetails}>
-                    <ThemedText style={styles.chatName}>{item.name}</ThemedText>
-                    <ThemedText style={styles.chatMessage}>{item.message}</ThemedText>
-                </View>
-                <View style={styles.chatMeta}>
-                    <ThemedText style={styles.chatTime}>{item.time}</ThemedText>
-                    {item.unreadCount > 0 && (
-                        <View style={styles.unreadBadge}>
-                            <ThemedText style={styles.unreadCount}>
-                                {item.unreadCount}
-                            </ThemedText>
-                        </View>
-                    )}
-                </View>
-            </TouchableOpacity>
-        );
+interface ChatUserProps {
+    chatData: {
+        id: number;
+        name: string;
+        message: string;
+        time: string;
+        unreadCount: number;
+        image: any;
     };
+    navigation: () => void;
+}
 
+export const ChatUser: React.FC<ChatUserProps> = ({ chatData, navigation }) => {
     return (
-        <FlatList
-            data={chatData.chats}
-            renderItem={renderChat}
-            keyExtractor={item => item.id.toString()}
-            contentContainerStyle={styles.chatList}
-            showsVerticalScrollIndicator={true}
-            nestedScrollEnabled={true}
-        />
+        <TouchableOpacity onPress={navigation} style={styles.chatItem}>
+            <Image source={chatData.image} style={styles.chatImage} />
+            <View style={styles.chatDetails}>
+                <ThemedText style={styles.chatName}>{chatData.name}</ThemedText>
+                <ThemedText style={styles.chatMessage}>{chatData.message}</ThemedText>
+            </View>
+            <View style={styles.chatMeta}>
+                <ThemedText style={styles.chatTime}>{chatData.time}</ThemedText>
+                {chatData.unreadCount > 0 && (
+                    <View style={styles.unreadBadge}>
+                        <ThemedText style={styles.unreadCount}>
+                            {chatData.unreadCount}
+                        </ThemedText>
+                    </View>
+                )}
+            </View>
+        </TouchableOpacity>
     );
 };
 
-
 const styles = StyleSheet.create({
-    chatList: {
-        paddingHorizontal: 20,
-        marginBottom: 30,
-        flex: 1,
-    },
     chatItem: {
         paddingVertical: sizes.hp_1,
         flexDirection: 'row',
@@ -110,6 +86,5 @@ const styles = StyleSheet.create({
     unreadCount: {
         fontSize: sizes.size10,
         color: '#fff',
-
     },
 });

@@ -3,6 +3,7 @@ import { StyleSheet, Text, TextStyle, View } from 'react-native';
 import { ThemedText } from '../../CoreComponent/ThemedText';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import { sizes } from '../../constant/size';
+import { COLORS } from '../../constant/Colors';
 interface desProps {
     Description: string
     textstyle: TextStyle
@@ -11,7 +12,7 @@ interface desProps {
 export const Description: React.FC<desProps> = ({ Description, textstyle }) => {
     return (
         <View >
-            <ThemedText style={[styles.text, textstyle]}>{Description}</ThemedText>
+            <Text style={[styles.text, textstyle]}>{Description}</Text>
         </View>
     );
 };
@@ -19,7 +20,7 @@ export const Description: React.FC<desProps> = ({ Description, textstyle }) => {
 const styles = StyleSheet.create({
 
     text: {
-        color: '#797C7B',
+        color: COLORS.light_Gray,
         fontSize: sizes.size14,
         lineHeight: 20,
         marginVertical: sizes.hp_2

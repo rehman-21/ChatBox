@@ -35,6 +35,9 @@ export const sizes = {
   size36: 36,
   size40: 40,
   size44: 44,
+  size50: 50,
+  size52: 52,
+  size56: 56,
   // *<===========("Icon Width")==========================>
   wp_1: wp(1),
   wp_2: wp(2),
