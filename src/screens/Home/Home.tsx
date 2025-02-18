@@ -1,52 +1,70 @@
-import React, { useState, useEffect } from 'react';
-import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import React from 'react';
+import {
+    FlatList,
+    Image,
+    StyleSheet,
+    TouchableOpacity,
+    View,
+} from 'react-native';
 import { ThemedText } from '../../CoreComponent/ThemedText';
-import { BottomSheet, CallSheet, ChatUser, Header, StatusUsers } from '../../components';
-import { ChatSheet } from '../../components/ChatSheet/ChatSheet';
+import { BottomSheet, ChatUser, StatusUsers } from '../../components';
 import { ThemedView } from '../../CoreComponent/ThemedView';
 import AntDesign from 'react-native-vector-icons/AntDesign';
-import { DIMENSIONS } from '../../constant/Dimensions';
-import { sizes } from '../../constant/size';
 import { useNavigation } from '@react-navigation/native';
 import { ROUTES } from '../../constant/routes';
+import { chatData } from '../../constant/Dummy';
 
+import { styles } from './HomeStyle';
 
 export const Home = () => {
-    const navigation = useNavigation()
-    return (
-        <View style={{ flex: 1, }}>
-            <ThemedView style={{ padding: 20, backgroundColor: '#000' }}>
-                <View
-                    style={{
-                        flexDirection: 'row',
-                        justifyContent: 'space-between',
-                        alignItems: 'center',
-                        paddingHorizontal: sizes.wp_1,
+    const navigation = useNavigation();
 
-                    }}>
-                    <TouchableOpacity
-                        style={{
-                            width: DIMENSIONS.WIDTH * 0.10,
-                            height: DIMENSIONS.HEIGHT * 0.05,
-                            borderWidth: 0.2,
-                            borderColor: '#FFF',
-                            justifyContent: 'center', alignItems: 'center',
-                            borderRadius: 50
-                        }}>
+    return (
+        <View style={styles.container}>
+            <ThemedView style={styles.headerContainer}>
+                <View style={styles.header}>
+                    <TouchableOpacity style={styles.searchButton}>
                         <AntDesign name="search1" size={20} color={'#FFF'} />
                     </TouchableOpacity>
-                    <ThemedText style={{ color: '#FFF' }}>Home</ThemedText>
+                    <ThemedText style={styles.headerTitle}>Home</ThemedText>
                     <TouchableOpacity>
                         <Image source={require('../../asset/images/User-1.png')} />
                     </TouchableOpacity>
                 </View>
-                <StatusUsers />
+                <FlatList
+                    data={chatData.statuses}
+                    keyExtractor={(item) => item.id.toString()}
+                    horizontal
+                    showsHorizontalScrollIndicator={false}
+                    contentContainerStyle={styles.statusList}
+                    renderItem={({ item }) => <StatusUsers chatData={item} />}
+                />
             </ThemedView>
             <BottomSheet>
-                <ChatUser />
+                <FlatList
+                    data={chatData.chats}
+                    keyExtractor={(item) => item.id.toString()}
+                    contentContainerStyle={styles.chatList}
+                    showsVerticalScrollIndicator={true}
+                    nestedScrollEnabled={true}
+                    renderItem={({ item }) => (
+                        <ChatUser
+                            navigation={() =>
+                                navigation.navigate(ROUTES.APP_STACK, {
+                                    screen: ROUTES.MESSAGES_SCREEN,
+                                    params: {
+                                        chatId: item.id,
+                                        chatName: item.name,
+                                    },
+                                })
+                            }
+                            chatData={item}
+                        />
+                    )}
+                />
             </BottomSheet>
         </View>
     );
 };
 
-const styles = StyleSheet.create({});
+

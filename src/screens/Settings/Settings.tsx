@@ -1,13 +1,16 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import { StyleSheet, View } from 'react-native';
+import React, { useContext } from 'react';
+import CustomButton from '../../components/Button/Button';
+import { AuthContext } from '../../Context/AuthContext';
+import { styles } from './SettingStyle';
 
 export const Settings = () => {
+    const { logout } = useContext(AuthContext);
+
     return (
-        <View>
-            <Text>Settings</Text>
+        <View style={styles.container}>
+            <CustomButton title="Log Out" onPress={logout} />
         </View>
-    )
-}
+    );
+};
 
-
-const styles = StyleSheet.create({})

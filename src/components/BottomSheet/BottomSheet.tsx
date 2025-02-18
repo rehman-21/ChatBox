@@ -6,6 +6,7 @@ import {
     BottomSheetView,
     BottomSheetModalProvider,
 } from '@gorhom/bottom-sheet';
+import { sizes } from '../../constant/size';
 
 export const BottomSheet: React.FC = ({ children }) => {
     const bottomSheetModalRef = useRef<BottomSheetModal>(null);
@@ -41,9 +42,9 @@ export const BottomSheet: React.FC = ({ children }) => {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
+        flex: sizes.flex_1,
     },
     contentContainer: {
-        flex: 1,
+        flex: sizes.flex_1,
     },
 });

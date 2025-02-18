@@ -30,8 +30,12 @@ export const COLORS = {
   background: '#F4F4F4',
   highlight: '#F4CE14',
   off_white_green: '#24786D',
+  white_green: '#20A090',
+  Sky_green: '#8DEEE2',
+  Skylight_green: '#E0EBE9',
   off_white: '#F3F6F6',
   black: '#000',
   off_white_gray: '#797C7B',
   red: '#FF2D1B',
+  light_Gray: '#B9C1BE',
 };

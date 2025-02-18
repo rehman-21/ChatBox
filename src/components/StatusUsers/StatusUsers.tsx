@@ -1,35 +1,28 @@
 import React from 'react';
-import { FlatList, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { ThemedText } from '../../CoreComponent/ThemedText';
-import { chatData } from '../../constant/Dummy';
 import { DIMENSIONS } from '../../constant/Dimensions';
 import { sizes } from '../../constant/size';
 import { COLORS } from '../../constant/Colors';
 
-export const StatusUsers = () => {
-    const renderStatus = ({ item }) => (
-        <TouchableOpacity style={styles.statusItem}>
-            <Image source={item.image} style={styles.statusImage} />
-            <ThemedText style={styles.statusName}>{item.name}</ThemedText>
-        </TouchableOpacity>
-    );
+interface StatusUsersProps {
+    chatData: {
+        id: number;
+        name: string;
+        image: any;
+    };
+}
 
+export const StatusUsers: React.FC<StatusUsersProps> = ({ chatData }) => {
     return (
-        <FlatList
-            data={chatData.statuses}
-            renderItem={renderStatus}
-            keyExtractor={(item) => item.id.toString()}
-            horizontal
-            showsHorizontalScrollIndicator={false}
-            contentContainerStyle={styles.statusList}
-        />
+        <TouchableOpacity style={styles.statusItem}>
+            <Image source={chatData.image} style={styles.statusImage} />
+            <ThemedText style={styles.statusName}>{chatData.name}</ThemedText>
+        </TouchableOpacity>
     );
 };
 
 const styles = StyleSheet.create({
-    statusList: {
-        marginTop: sizes.hp_4
-    },
     statusItem: {
         alignItems: 'center',
         marginRight: 15,
@@ -40,7 +33,7 @@ const styles = StyleSheet.create({
         borderRadius: 50,
         borderWidth: 2,
         borderColor: COLORS.highlight,
-        resizeMode: 'contain'
+        resizeMode: 'contain',
     },
     statusName: {
         marginTop: 5,
